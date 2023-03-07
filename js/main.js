@@ -27,22 +27,26 @@ function numberGenerator (min, max){
 
 
 
-   let numberUser
-   setTimeout(fiveUserNumber(), 4000);
+let numberUser;
+setTimeout(fiveUserNumber, 4000);
 
 setTimeout(function(){
     contentDom.innerHTML = "";
   }, 3000);
+
+
+
 // chiedo con prompt i numeri all'utente e li salvo in array
 let userNumberList = [];
 
 
 console.log(randomNumber);
-console.log(userNumberList);
+
 
 
 function fiveUserNumber(){
-for ( let i = 0; i < randomNumber.lenght -1; i++){
-    numberUser = prompt('inserisci i numeri uno alla volta');
+for ( let i = 0; i < randomNumber.length; i++){
+    numberUser = parseInt(prompt('inserisci i numeri uno alla volta'));
     userNumberList.push(numberUser)
     }};
+    console.log(userNumberList);
