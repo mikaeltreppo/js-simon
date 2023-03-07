@@ -5,48 +5,53 @@ Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei num
 
 let contentDom = document.getElementById('content');
 let numberGenerated;
-let randomNumber =  [];
+let randomNumber = [];
 
 
 // ciclo 5 volte per inserire random number in array
-for (let i = 0; i<5; i++){
-        numberGenerator(1, 100)
-    if(!randomNumber.includes(numberGenerated))
-    {
+for (let i = 0; i < 5; i++) {
+    numberGenerator(1, 100)
+    if (!randomNumber.includes(numberGenerated)) {
         randomNumber.push(numberGenerated)
     }
 }
 //creo numero
-function numberGenerator (min, max){
- numberGenerated = Math.floor(Math.random() * (max - min +1) + min);
- return numberGenerated;
+function numberGenerator(min, max) {
+    numberGenerated = Math.floor(Math.random() * (max - min + 1) + min);
+    return numberGenerated;
 }
 //mostro i numeri
-   contentDom.innerHTML=randomNumber;
+contentDom.innerHTML = randomNumber;
 // setto il timer a 30 secondi  e nascondo i numeri
-
-
 
 let numberUser;
 setTimeout(fiveUserNumber, 4000);
 
-setTimeout(function(){
+setTimeout(function () {
     contentDom.innerHTML = "";
-  }, 3000);
-
-
+}, 3000);
 
 // chiedo con prompt i numeri all'utente e li salvo in array
 let userNumberList = [];
 
-
-console.log(randomNumber);
-
-
-
-function fiveUserNumber(){
-for ( let i = 0; i < randomNumber.length; i++){
-    numberUser = parseInt(prompt('inserisci i numeri uno alla volta'));
-    userNumberList.push(numberUser)
-    }};
+function fiveUserNumber() {
+    for (let i = 0; i < randomNumber.length; i++) {
+        numberUser = parseInt(prompt('inserisci i numeri uno alla volta'));
+        userNumberList.push(numberUser)
+    }
     console.log(userNumberList);
+    //confronto
+    let points = 0;
+    let sameNumbers = [];
+    for (let i = 0; i < randomNumber.length; i++) {
+        if (userNumberList.includes(randomNumber[i])) {
+            sameNumbers.push(randomNumber[i])
+            points++;
+        }
+
+    } 
+   contentDom.innerHTML = "hai fatto : " + points + " punti" + " i numeri corretti sono : " + sameNumbers;
+
+
+}
+console.log(randomNumber);
